@@ -2,6 +2,7 @@ DESAFIOS
 
 0: entendido
 1: itba
+2: M4GFKZ289aku
 
 
 
@@ -12,7 +13,10 @@ DESAFIOS
 ¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?
 --------------------------------------------------------------------------------------------------------
 
-SANTI COMPLETÁ ESTO
+Tras interactuar un rato con el programa y notar que ningún input parecía hacer nada, el nombre server nos dió la idea 
+de investigar comandos para consultar información relacionada a las conexiones y puertos. 
+Terminamos usando el comando 'sudo lsof -i -P -n' con el que pudimos ver a la aplicación server y la info 
+relacionada a la dirección,puerto y protocolo.
 
 
 ¿Qué diferencias hay entre TCP y UDP y en qué casos conviene usar cada uno?
