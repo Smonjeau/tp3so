@@ -1,0 +1,23 @@
+
+
+--------------------------------------------------------------------------------------------------------
+                                    Preguntas para investigar
+--------------------------------------------------------------------------------------------------------
+
+¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?
+--------------------------------------------------------------------------------------------------------
+
+SANTI COMPLETÁ ESTO
+
+
+¿Qué diferencias hay entre TCP y UDP y en qué casos conviene usar cada uno?
+--------------------------------------------------------------------------------------------------------
+
+El protocolo TCP provee el concepto de conexión, es un protocolo complejo que posee mecanismos para el control
+de errores en la transmisión, garantizar el correcto orden de llegada de todos los paquetes, y controlar el
+tráfico para evitar congestión. Esto lo vuelve ideal para aplicaciones que requieran garantizar sí o sí
+la integridad de los datos (ej. el protocolo HTTP)
+
+En contraste, UDP solo requiere establecer un socket para iniciar la comunicación, y no posee todos esos
+mecanismos, lo que lo vuelve mucho más rápido. Esto lo vuelve ideal para aplicaciones que necesiten priorizar
+la velocidad por sobre la integridad (ej. aplicaciones de streaming)
