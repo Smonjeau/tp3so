@@ -1,3 +1,8 @@
+DESAFIOS
+
+0: entendido
+1: itba
+
 
 
 --------------------------------------------------------------------------------------------------------
@@ -21,3 +26,9 @@ la integridad de los datos (ej. el protocolo HTTP)
 En contraste, UDP solo requiere establecer un socket para iniciar la comunicación, y no posee todos esos
 mecanismos, lo que lo vuelve mucho más rápido. Esto lo vuelve ideal para aplicaciones que necesiten priorizar
 la velocidad por sobre la integridad (ej. aplicaciones de streaming)
+
+
+¿El puerto que usaron para conectarse al server es el mismo que usando para mandar las respuestas? ¿Por qué?
+--------------------------------------------------------------------
+
+Sí, porque el socket está abierto en ese puerto, el server queda a la escucha de esa conexión

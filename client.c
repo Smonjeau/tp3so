@@ -12,7 +12,7 @@
 #define SA struct sockaddr
 
 
-void func(int sockfd);
+void chat(int sockfd);
  
 
 int main() {
@@ -43,30 +43,35 @@ int main() {
 	printf("Connected to the server\n"); 
 
 	// function for chat 
-	func(sockfd); 
+	chat(sockfd); 
 
 	// close the socket 
 	close(sockfd); 
 } 
 
 
-void func(int sockfd){
-	char buff[MAX] = {0}; 
+void chat(int sockfd){
+	char buff[MAX] = {0};
+
+	// char *answers[2] = {"entendido\n", "5815 222 4822"};
+	// for(int i=0; i<2; i++){
+	// 	write(sockfd, answers[i], strlen(answers[i]));
+	// 	printf("%s", answers[i]);
+
+	// 	if ((strncmp(buff, "exit", 4)) == 0)
+	// 		exit(0);
+	// }
 
 	while(1) { 
-		printf("Enter the string : "); 
+		printf("Enter the string: "); 
 		
 		int n = 0; 
 		while ((buff[n++] = getchar()) != '\n');
 		
-		printf("%s", buff);
 		write(sockfd, buff, n);
+		printf("%s", buff);
 
-/*		read(sockfd, buff, sizeof(buff)); 
-		printf("From Server : %s", buff); 
-		if ((strncmp(buff, "exit", 4)) == 0) { 
-			printf("Client Exit...\n"); 
-			break; 
-		} */
+		if ((strncmp(buff, "exit", 4)) == 0)
+			exit(0);
 	} 
 }
