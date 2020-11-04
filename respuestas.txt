@@ -7,6 +7,8 @@ DESAFIOS
 4: too_easy
 5: .RUN_ME
 6: K5n2UFfpFMUN
+7: BUmyYq5XxXGt
+8: u^v
 
 --------------------------------------------------------------------------------------------------------
                                     Preguntas para investigar
@@ -54,8 +56,14 @@ Un servidor suele crear un nuevo proceso o thread para atender las conexiones en
 ¿Cómo se puede implementar un servidor que atienda muchas conexiones sin usar procesos ni threads?
 
 	RESPONDER
-<<<<<<< HEAD
 
 ¿Qué aplicaciones se pueden utilizar para ver el tráfico por la red?
+
+	RESPONDER
+ 
+sockets es un mecanismo de IPC. ¿Qué es más eficiente entre sockets y pipes?
+	RESPONDER
+
+¿Cuáles son las características del protocolo SCTP?
 
 	RESPONDER
