@@ -5,7 +5,8 @@ DESAFIOS
 2: M4GFKZ289aku
 3: fk3wfLCm3QvS
 4: too_easy
-
+5: .RUN_ME
+6: K5n2UFfpFMUN
 
 --------------------------------------------------------------------------------------------------------
                                     Preguntas para investigar
@@ -47,5 +48,13 @@ Son tratados como un dispositivo más, por lo tanto tienen un file descriptor y 
 
 
 Un servidor suele crear un nuevo proceso o thread para atender las conexiones entrantes. ¿Qué conviene más?
+
+	RESPONDER
+
+¿Cómo se puede implementar un servidor que atienda muchas conexiones sin usar procesos ni threads?
+
+	RESPONDER
+
+¿Qué aplicaciones se pueden utilizar para ver el tráfico por la red?
 
 	RESPONDER
