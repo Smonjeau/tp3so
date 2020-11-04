@@ -53,8 +53,8 @@ int main() {
 void chat(int sockfd){
 	char buff[MAX] = {0};
 
-	char *answers[4] = {"entendido\n", "itba\n", "M4GFKZ289aku\n", "\x9\n"};
-	for(int i=0; i<4; i++){
+	char *answers[5] = {"entendido\n", "itba\n", "M4GFKZ289aku\n", "fk3wfLCm3QvS\n", "too_easy\n"};
+	for(int i=0; i<5; i++){
 	 	write(sockfd, answers[i], strlen(answers[i]));
 	 	printf("%s", answers[i]);
 

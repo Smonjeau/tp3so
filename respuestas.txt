@@ -3,6 +3,8 @@ DESAFIOS
 0: entendido
 1: itba
 2: M4GFKZ289aku
+3: fk3wfLCm3QvS
+4: too_easy
 
 
 --------------------------------------------------------------------------------------------------------
@@ -37,3 +39,13 @@ Sí, porque el socket está abierto en ese puerto, el server queda a la escucha 
 ¿Qué útil abstracción es utilizada para comunicarse con sockets? ¿Se puede utilizar read(2) y write(2) para operar?
 
 Son tratados como un dispositivo más, por lo tanto tienen un file descriptor y se pueden usar las syscalls de read/write.
+
+
+¿Cómo garantiza TCP que los paquetes llegan en orden y no se pierden?
+
+	RESPONDER
+
+
+Un servidor suele crear un nuevo proceso o thread para atender las conexiones entrantes. ¿Qué conviene más?
+
+	RESPONDER
