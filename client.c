@@ -45,7 +45,7 @@ int main() {
 	// function for chat 
 	chat(sockfd); 
 
-	// close the socket 
+	// Close the socket 
 	close(sockfd); 
 } 
 
@@ -53,14 +53,14 @@ int main() {
 void chat(int sockfd){
 	char buff[MAX] = {0};
 
-	// char *answers[2] = {"entendido\n", "5815 222 4822"};
-	// for(int i=0; i<2; i++){
-	// 	write(sockfd, answers[i], strlen(answers[i]));
-	// 	printf("%s", answers[i]);
+	char *answers[4] = {"entendido\n", "itba\n", "M4GFKZ289aku\n", "\x9\n"};
+	for(int i=0; i<4; i++){
+	 	write(sockfd, answers[i], strlen(answers[i]));
+	 	printf("%s", answers[i]);
 
-	// 	if ((strncmp(buff, "exit", 4)) == 0)
-	// 		exit(0);
-	// }
+	 	if ((strncmp(buff, "exit", 4)) == 0)
+	 		exit(0);
+	}
 
 	while(1) { 
 		printf("Enter the string: "); 

@@ -5,34 +5,35 @@ DESAFIOS
 2: M4GFKZ289aku
 
 
-
 --------------------------------------------------------------------------------------------------------
                                     Preguntas para investigar
 --------------------------------------------------------------------------------------------------------
 
 ¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?
---------------------------------------------------------------------------------------------------------
 
-Tras interactuar un rato con el programa y notar que ningún input parecía hacer nada, el nombre server nos dió la idea 
-de investigar comandos para consultar información relacionada a las conexiones y puertos. 
+Tras interactuar un rato con el programa y notar que ningún input parecía hacer nada, el nombre server nos dió
+la idea de investigar comandos para consultar información relacionada a las conexiones y puertos. 
 Terminamos usando el comando 'sudo lsof -i -P -n' con el que pudimos ver a la aplicación server y la info 
 relacionada a la dirección,puerto y protocolo.
 
 
 ¿Qué diferencias hay entre TCP y UDP y en qué casos conviene usar cada uno?
---------------------------------------------------------------------------------------------------------
 
 El protocolo TCP provee el concepto de conexión, es un protocolo complejo que posee mecanismos para el control
 de errores en la transmisión, garantizar el correcto orden de llegada de todos los paquetes, y controlar el
 tráfico para evitar congestión. Esto lo vuelve ideal para aplicaciones que requieran garantizar sí o sí
-la integridad de los datos (ej. el protocolo HTTP)
+la integridad de los datos (ej. el protocolo HTTP).
 
 En contraste, UDP solo requiere establecer un socket para iniciar la comunicación, y no posee todos esos
 mecanismos, lo que lo vuelve mucho más rápido. Esto lo vuelve ideal para aplicaciones que necesiten priorizar
-la velocidad por sobre la integridad (ej. aplicaciones de streaming)
+la velocidad por sobre la integridad (ej. aplicaciones de streaming).
 
 
 ¿El puerto que usaron para conectarse al server es el mismo que usando para mandar las respuestas? ¿Por qué?
---------------------------------------------------------------------
 
-Sí, porque el socket está abierto en ese puerto, el server queda a la escucha de esa conexión
+Sí, porque el socket está abierto en ese puerto, el server queda a la escucha de esa conexión.
+
+
+¿Qué útil abstracción es utilizada para comunicarse con sockets? ¿Se puede utilizar read(2) y write(2) para operar?
+
+Son tratados como un dispositivo más, por lo tanto tienen un file descriptor y se pueden usar las syscalls de read/write.
