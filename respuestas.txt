@@ -10,6 +10,7 @@ DESAFIOS
 7: BUmyYq5XxXGt
 8: u^v
 9: chin_chu_lan_cha
+10: gdb_rules
 
 
 --------------------------------------------------------------------------------------------------------
@@ -73,3 +74,7 @@ sockets es un mecanismo de IPC. ¿Qué es más eficiente entre sockets y pipes?
 ¿Qué es un RFC?
 
 	RESPONDER
+
+¿Fue divertido?
+
+	SIII

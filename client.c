@@ -53,9 +53,9 @@ int main() {
 void chat(int sockfd){
 	char buff[MAX] = {0};
 
-	char *answers[10] = {"entendido\n", "itba\n", "M4GFKZ289aku\n", "fk3wfLCm3QvS\n", "too_easy\n", ".RUN_ME\n",
-		"K5n2UFfpFMUN\n", "BUmyYq5XxXGt\n", "u^v\n","chin_chu_lan_cha\n"};
-	for(int i=0; i<10; i++){
+	char *answers[11] = {"entendido\n", "itba\n", "M4GFKZ289aku\n", "fk3wfLCm3QvS\n", "too_easy\n", ".RUN_ME\n",
+		"K5n2UFfpFMUN\n", "BUmyYq5XxXGt\n", "u^v\n","chin_chu_lan_cha\n","gdb_rules\n"};
+	for(int i=0; i<11; i++){
 	 	sleep(1);
 		 write(sockfd, answers[i], strlen(answers[i]));
 		sleep(1);
@@ -64,6 +64,7 @@ void chat(int sockfd){
 	 	if ((strncmp(buff, "exit", 4)) == 0)
 	 		exit(0);
 	}
+
 
 	while(1) { 
 		printf("Enter the string: "); 
