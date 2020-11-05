@@ -9,6 +9,8 @@ DESAFIOS
 6: K5n2UFfpFMUN
 7: BUmyYq5XxXGt
 8: u^v
+9: chin_chu_lan_cha
+
 
 --------------------------------------------------------------------------------------------------------
                                     Preguntas para investigar
@@ -65,5 +67,9 @@ sockets es un mecanismo de IPC. ¿Qué es más eficiente entre sockets y pipes?
 	RESPONDER
 
 ¿Cuáles son las características del protocolo SCTP?
+
+	RESPONDER
+
+¿Qué es un RFC?
 
 	RESPONDER
