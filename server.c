@@ -6,6 +6,7 @@
 #include <string.h> 
 #include <unistd.h>
 #include <sys/socket.h> 
+#include <time.h>
 #include <sys/types.h> 
 #include "challenges.h"
 #define MAX 80 
@@ -42,7 +43,7 @@ void func(int sockfd)
     int n; 
 
 
-    for (int challenge = 0;challenge <4;) { 
+    for (int challenge = 0;challenge <12;) { 
         bzero(buff, MAX); 
         if (new){
             printf("------------- DESAFIO -------------\n");
@@ -72,7 +73,9 @@ void func(int sockfd)
   
 // Driver function 
 int main() 
+
 { 
+    srand(time(NULL));
     int sockfd, connfd, len; 
     struct sockaddr_in servaddr, cli; 
   

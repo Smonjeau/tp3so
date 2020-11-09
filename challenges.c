@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <unistd.h>
 
+#include "utils.h"
+
+#define PRIMER_ASCII_IMPRIMIBLE 32
+#define ULTIMO_ASCII_IMPRIMIBLE 126 
+
 void challenge1(){
 
 
@@ -34,6 +39,23 @@ void challenge6(){
     return;
 }
 void challenge7(){
+    printf("Filter error\n");
+    char * answer = "La respuesta es K5n2UFfpFMUN";
+    int i=0;
+    int size=0;
+    while(answer[i]){
+        int fd = randomChar(STDOUT_FILENO,STDERR_FILENO+5); //Menos probabilidad de que salga STDOUT
+        if(fd==STDOUT_FILENO && answer[i]){
+            write(fd,answer + i++,1);
+
+        }
+        else{
+            char c;
+            c = randomChar(PRIMER_ASCII_IMPRIMIBLE,ULTIMO_ASCII_IMPRIMIBLE);
+            write(STDERR_FILENO,&c,1);
+        }
+    
+    }
     return;
 }
 void challenge8(){
