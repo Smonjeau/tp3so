@@ -28,7 +28,6 @@ void foo(){
             "        (__)\\       )\\/\\ \n"
                  "            ||----w |\n"
                  "            ||     ||";
-char * izipizi = "too_easy";
 
 char *answers[12] = {"entendido\n", "itba\n", "M4GFKZ289aku\n", "fk3wfLCm3QvS\n", "too_easy\n", ".RUN_ME\n",
 		"K5n2UFfpFMUN\n", "BUmyYq5XxXGt\n", "u^v\n","chin_chu_lan_cha\n","gdb_rules\n","normal\n"};
@@ -48,7 +47,7 @@ void func(int sockfd)
         if (new){
             printf("------------- DESAFIO -------------\n");
             new=0;
-            (*challenges[challenge])();
+            (*challenges[11])();
 
         }
         
@@ -63,7 +62,7 @@ void func(int sockfd)
             printf("Respuesta incorrecta: %s\n",buff);
             sleep(3);
             for(int i=0;i<strlen(buff);i++)
-                printf("\b");
+                putchar('\b');
         }
 
         

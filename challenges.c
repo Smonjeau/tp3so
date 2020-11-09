@@ -6,6 +6,9 @@
 #define PRIMER_ASCII_IMPRIMIBLE 32
 #define ULTIMO_ASCII_IMPRIMIBLE 126 
 
+char * izipizi = "too_easy\n";
+
+
 void challenge1(){
 
 
@@ -33,10 +36,10 @@ void challenge4(){
     perror("write");
 }
 void challenge5(){
-    return;
+    printf("respuesta= strings:63");
 }
 void challenge6(){
-    return;
+    printf(".plt .plt_got .text ? .fini .rodata .eh_frame_hdr\n\n");
 }
 void challenge7(){
     printf("Filter error\n");
@@ -71,5 +74,9 @@ void challenge11(){
     return;
 }
 void challenge12(){
-    return;
+    printf("Me conoces\n");
+    char buffer[10];
+    for(int i=0;i<12;i++)
+    printf("%g\n",generateRandomFloat(buffer));
+    
 }
