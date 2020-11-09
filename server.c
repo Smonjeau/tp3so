@@ -1,81 +1,128 @@
-#include <stdio.h>
+
+#include <stdio.h> 
+#include <netdb.h> 
+#include <netinet/in.h> 
 #include <stdlib.h> 
 #include <string.h> 
 #include <unistd.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <netdb.h> 
-
+#include <sys/socket.h> 
+#include <sys/types.h> 
+#include "challenges.h"
 #define MAX 80 
 #define PORT 8080 
-#define SA struct sockaddr
+#define SA struct sockaddr 
 
+void foo() __attribute__((section(".RUN_ME")));
 
-void chat(int sockfd);
- 
-
-int main() {
-	int sockfd, connfd; 
-	struct sockaddr_in servaddr = {0};
-	struct sockaddr_in cli = {0}; 
-
-	// Socket creation
-	sockfd = socket(AF_INET, SOCK_STREAM, 0); 
-	if (sockfd == -1) { 
-		printf("Socket creation failed\n"); 
-		exit(0); 
-	} 
-	
-	printf("Socket successfully created\n"); 
-
-	// Assign IP, PORT 
-	servaddr.sin_family = AF_INET; 
-	servaddr.sin_addr.s_addr = inet_addr("127.0.0.1"); 
-	servaddr.sin_port = htons(PORT); 
-
-	// Connect the client socket to server socket 
-	if (connect(sockfd, (SA*)&servaddr, sizeof(servaddr)) != 0) { 
-		printf("Connection with the server failed\n"); 
-		exit(0); 
-	} 
-	
-	printf("Connected to the server\n"); 
-
-	// function for chat 
-	chat(sockfd); 
-
-	// Close the socket 
-	close(sockfd); 
-} 
-
-
-void chat(int sockfd){
-	char buff[MAX] = {0};
-
-	char *answers[12] = {"entendido\n", "itba\n", "M4GFKZ289aku\n", "fk3wfLCm3QvS\n", "too_easy\n", ".RUN_ME\n",
-		"K5n2UFfpFMUN\n", "BUmyYq5XxXGt\n", "u^v\n","chin_chu_lan_cha\n","gdb_rules\n","normal\n"};
-	for(int i=0; i<12; i++){
-	 	sleep(1);
-		 write(sockfd, answers[i], strlen(answers[i]));
-		sleep(1);
-	 	printf("%s", answers[i]);
-
-	 	if ((strncmp(buff, "exit", 4)) == 0)
-	 		exit(0);
-	}
-
-
-	while(1) { 
-		printf("Enter the string: "); 
-		
-		int n = 0; 
-		while ((buff[n++] = getchar()) != '\n');
-		
-		write(sockfd, buff, n);
-		printf("%s", buff);
-
-		if ((strncmp(buff, "exit", 4)) == 0)
-			exit(0);
-	} 
+void foo(){
+    return;
 }
+
+ char * vaquita = 
+ "_______________________\n"
+"< ESTO ES UN EASTER_EGG >\n"
+ "-----------------------\n"
+        "     \\  ^__^\n"
+         "     \\  (oo)\\_______\n"
+            "        (__)\\       )\\/\\ \n"
+                 "            ||----w |\n"
+                 "            ||     ||";
+char * izipizi = "too_easy";
+
+char *answers[12] = {"entendido\n", "itba\n", "M4GFKZ289aku\n", "fk3wfLCm3QvS\n", "too_easy\n", ".RUN_ME\n",
+		"K5n2UFfpFMUN\n", "BUmyYq5XxXGt\n", "u^v\n","chin_chu_lan_cha\n","gdb_rules\n","normal\n"};
+
+  
+// Function designed for chat between client and server. 
+void func(int sockfd) 
+{ 
+
+    int new=1;
+    char buff[MAX]; 
+    int n; 
+
+
+    for (int challenge = 0;challenge <4;) { 
+        bzero(buff, MAX); 
+        if (new){
+            printf("------------- DESAFIO -------------\n");
+            new=0;
+            (*challenges[challenge])();
+
+        }
+        
+        // read the message from client and copy it in buffer 
+        read(sockfd, buff, sizeof(buff)); 
+        if(strcmp(buff,answers[challenge])== 0){
+            challenge++;
+            new=1;
+            system("clear");
+
+        }else{
+            printf("Respuesta incorrecta: %s\n",buff);
+            sleep(3);
+            for(int i=0;i<strlen(buff);i++)
+                printf("\b");
+        }
+
+        
+    } 
+    printf("Felicitaciones, terminaste el desafío!\n");
+} 
+  
+// Driver function 
+int main() 
+{ 
+    int sockfd, connfd, len; 
+    struct sockaddr_in servaddr, cli; 
+  
+    // socket create and verification 
+    sockfd = socket(AF_INET, SOCK_STREAM, 0); 
+    if (sockfd == -1) { 
+        fprintf(stderr,"socket creation failed...\n"); 
+        exit(0); 
+    }
+    // 
+    if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &(int){1}, sizeof(int)) < 0)
+        fprintf(stderr,"setsockopt(SO_REUSEADDR) failed");    
+   // else
+       // printf("Socket successfully created..\n"); 
+    bzero(&servaddr, sizeof(servaddr)); 
+  
+    // assign IP, PORT 
+    servaddr.sin_family = AF_INET; 
+    servaddr.sin_addr.s_addr = htonl(INADDR_ANY); 
+    servaddr.sin_port = htons(PORT); 
+  
+    // Binding newly created socket to given IP and verification 
+    if ((bind(sockfd, (SA*)&servaddr, sizeof(servaddr))) != 0) { 
+        fprintf(stderr,"socket bind failed...\n"); 
+        exit(0); 
+    } 
+  //  else
+   //     printf("Socket successfully binded..\n"); 
+  
+    // Now server is ready to listen and verification 
+    if ((listen(sockfd, 5)) != 0) { 
+        printf("Listen failed...\n"); 
+        exit(0); 
+    } 
+  //  else
+   //     printf("Server listening..\n"); 
+    len = sizeof(cli); 
+  
+    // Accept the data packet from client and verification 
+    connfd = accept(sockfd, (SA*)&cli, &len); 
+    if (connfd < 0) { 
+        printf("server acccept failed...\n"); 
+        exit(0); 
+    } 
+   //else
+  //      printf("server acccept the client...\n"); 
+  
+    // Function for chatting between client and server 
+    func(connfd); 
+  
+    // After chatting close the socket 
+    close(sockfd); 
+} 
