@@ -56,7 +56,7 @@ void chat(int sockfd){
 	char *answers[12] = {"entendido\n", "itba\n", "M4GFKZ289aku\n", "fk3wfLCm3QvS\n", "too_easy\n", ".RUN_ME\n",
 		"K5n2UFfpFMUN\n", "BUmyYq5XxXGt\n", "u^v\n","chin_chu_lan_cha\n","gdb_rules\n","normal\n"};
 	
-	for(int i=0; i<8; i++){
+	for(int i=0; i<9; i++){
 		write(sockfd, answers[i], strlen(answers[i]));
 	 	printf("%s", answers[i]);
 

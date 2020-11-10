@@ -109,12 +109,50 @@ void challenge8(){
 
 
 void challenge9(){
-    return;
+    
+    printf("Latexme\n");
+    printf("Si\n");
+    printf(" \\mathrm{d}y = u^v{\cdot}(v'{\cdot}\ln{(u)}+v{\cdot}\frac{u'}{u})\n");
+    printf("Entonces\n");
+    printf(" y = \n");
+    
 }
 
 
 void challenge10(){
-    return;
+    
+    printf("quine\n");
+
+    int retry = 1;
+    while(retry){
+
+        int r = system("gcc quine.c -o quine");
+
+        if(r == 0){
+
+            printf("¡Genial!, ya lograron meter un programa en quine.c, veamos si hace lo que corresponde.\n");
+
+            system("./quine > out");
+            r = system("diff quine.c out");
+
+            if(r == 0){
+                printf("La respuesta es chin_chu_lan_cha\n");
+                retry = 0;
+            }else{
+                printf("diff encontró diferencias.\n");
+                printf("ENTER para reintentar.\n");
+
+                char c;
+                while((c = getchar() != '\n'));
+                system("clear");
+            }
+
+        }
+
+    }
+
+    system("rm out quine");
+    
 }
 
 
