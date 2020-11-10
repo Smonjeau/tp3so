@@ -14,7 +14,7 @@ double generateRandomFloat(){
 
     srand(time(0));
 
-    double aux = cos(log(sqrt(randomChar(2, 8))));
+    double aux = cos(log(sqrt(randomInt(2, 8))));
     int positive = randomInt(0, 1);
 
     if(!positive)

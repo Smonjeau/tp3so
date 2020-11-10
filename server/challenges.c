@@ -112,7 +112,7 @@ void challenge9(){
     
     printf("Latexme\n");
     printf("Si\n");
-    printf(" \\mathrm{d}y = u^v{\cdot}(v'{\cdot}\ln{(u)}+v{\cdot}\frac{u'}{u})\n");
+    printf(" \\mathrm{d}y = u^v{\\cdot}(v'{\\cdot}\\ln{(u)}+v{\\cdot}\\frac{u'}{u})\n");
     printf("Entonces\n");
     printf(" y = \n");
     
@@ -157,7 +157,27 @@ void challenge10(){
 
 
 void challenge11(){
-    return;
+    
+    printf("gdbme y encontrá el valor mágico");
+
+    int var = 0;
+    int retry = 1;
+
+    while(retry){
+
+        if(var == 0x1235678){
+            printf("La respuesta es gdb_rules\n");
+            retry = 0;
+        }else{
+            printf("ENTER para reintentar\n");
+
+            char c;
+            while((c = getchar() != '\n'));
+            system("clear");
+        }
+        
+    }
+    
 }
 
 
