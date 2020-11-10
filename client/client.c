@@ -42,7 +42,7 @@ int main() {
 	
 	printf("Connected to the server\n"); 
 
-	// function for chat 
+	// Function for chat 
 	chat(sockfd); 
 
 	// Close the socket 

@@ -2,9 +2,7 @@
 #define __UTILS__H
 #include <stdlib.h>
 
-
-
-char randomChar (int limite_inferior,int limite_superior);
+int randomInt(int limite_inferior, int limite_superior);
 
 double generateRandomFloat();
 
