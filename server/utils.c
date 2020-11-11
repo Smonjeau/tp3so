@@ -1,7 +1,20 @@
 #include "utils.h"
+#include <stdio.h>
 
-int randomInt(int limite_inferior, int limite_superior){
+int randomInt(int a, int b){
 
-    return limite_inferior + rand()%(limite_superior-limite_inferior+1);
+    return a + rand() % (b-a+1);
+
+}
+
+
+double randomDouble(double a, double b){
+
+    double num = a;
+
+    while(num == a || num == b)
+        num = a + rand() * (b-a)/RAND_MAX;
+    
+    return num;
 
 }

@@ -2,6 +2,8 @@
 #define __UTILS__H
 #include <stdlib.h>
 
-int randomInt(int limite_inferior, int limite_superior);
+int randomInt(int a, int b);
+
+double randomDouble(double a, double b);
 
 #endif

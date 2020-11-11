@@ -87,7 +87,7 @@ void challenge7(){
     int size=0;
 
     while(answer[i]){
-        int fd = randomInt(STDOUT_FILENO, STDERR_FILENO+5); //Menos probabilidad de que salga STDOUT
+        int fd = (int) randomInt(STDOUT_FILENO, STDERR_FILENO+5); //Menos probabilidad de que salga STDOUT
 
         if(fd==STDOUT_FILENO && answer[i]){
             write(STDOUT_FILENO, answer + i++, 1);
@@ -169,14 +169,15 @@ void challenge12(){
 
     printf("Me conocés\n");
 
-    for(int i=0; i<900; i++){
-        double num = cos(log(sqrt(randomInt(2, 8))));
-        int positive = randomInt(0, 1);
+    for(int i=0; i<450; i++){
 
-        if(!positive)
-            num *= -1;
+        double u1 = randomDouble(0, 1);
+        double u2 = randomDouble(0, 1);
 
-        printf("%g ", num);
+        double n1 = sqrt(-2*log(u1))*cos(2*3.1416*u2);
+        double n2 = sqrt(-2*log(u1))*sin(2*3.1416*u2);
+
+        printf("%g %g ", n1, n2);
     }
 
     printf("\n");
