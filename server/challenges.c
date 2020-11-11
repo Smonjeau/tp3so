@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <math.h>
 
 #include "utils.h"
 
@@ -65,14 +66,14 @@ void challenge4(){
 
 void challenge5(){
 
-    printf("respuesta = strings:63");
+    printf("respuesta = strings:36\n");
 
 }
 
 
 void challenge6(){
 
-    printf(".plt .plt_got .text ? .fini .rodata .eh_frame_hdr\n\n");
+    printf(".plt .plt_got .text ? .fini .rodata .eh_frame_hdr\n");
 
 }
 
@@ -89,7 +90,7 @@ void challenge7(){
         int fd = randomInt(STDOUT_FILENO, STDERR_FILENO+5); //Menos probabilidad de que salga STDOUT
 
         if(fd==STDOUT_FILENO && answer[i]){
-            write(fd, answer + i++, 1);
+            write(STDOUT_FILENO, answer + i++, 1);
         }else{
             char c = (char) randomInt(PRIMER_ASCII_IMPRIMIBLE, ULTIMO_ASCII_IMPRIMIBLE);
             write(STDERR_FILENO, &c, 1);
@@ -103,7 +104,7 @@ void challenge8(){
    
    printf("¿?\n");
 
-   printf("\x1B[30;40m BUmyYq5XxXGt \x1B[0m\n");
+   printf("\x1B[30;40m La respuesta es BUmyYq5XxXGt \x1B[0m\n");
    
 }
 
@@ -123,30 +124,16 @@ void challenge10(){
     
     printf("quine\n");
 
-    int retry = 1;
-    while(retry){
+    if(system("gcc quine.c -o quine") == 0){
 
-        int r = system("gcc quine.c -o quine");
+        printf("¡Genial!, ya lograron meter un programa en quine.c, veamos si hace lo que corresponde.\n");
 
-        if(r == 0){
+        system("./quine > out");
 
-            printf("¡Genial!, ya lograron meter un programa en quine.c, veamos si hace lo que corresponde.\n");
-
-            system("./quine > out");
-            r = system("diff quine.c out");
-
-            if(r == 0){
-                printf("La respuesta es chin_chu_lan_cha\n");
-                retry = 0;
-            }else{
-                printf("diff encontró diferencias.\n");
-                printf("ENTER para reintentar.\n");
-
-                char c;
-                while((c = getchar() != '\n'));
-                system("clear");
-            }
-
+        if(system("diff quine.c out") == 0){
+            printf("La respuesta es chin_chu_lan_cha\n");
+        }else{
+            printf("diff encontró diferencias.\n");
         }
 
     }
@@ -156,36 +143,42 @@ void challenge10(){
 }
 
 
+int value(){
+    return 0;
+}
+
+int gdbme(){
+
+    if(value() == 0x12345678){
+        printf("La respuesta es gdb_rules\n");
+        return 0;
+    }
+
+}
+
 void challenge11(){
     
-    printf("gdbme y encontrá el valor mágico");
+    printf("gdbme y encontrá el valor mágico\n");
 
-    int var = 0;
-    int retry = 1;
-
-    while(retry){
-
-        if(var == 0x1235678){
-            printf("La respuesta es gdb_rules\n");
-            retry = 0;
-        }else{
-            printf("ENTER para reintentar\n");
-
-            char c;
-            while((c = getchar() != '\n'));
-            system("clear");
-        }
-        
-    }
+    gdbme();
     
 }
 
 
 void challenge12(){
 
-    printf("Me conoces\n");
+    printf("Me conocés\n");
 
-    for(int i=0; i<12; i++)
-        printf("%g\n", generateRandomFloat());
+    for(int i=0; i<900; i++){
+        double num = cos(log(sqrt(randomInt(2, 8))));
+        int positive = randomInt(0, 1);
+
+        if(!positive)
+            num *= -1;
+
+        printf("%g ", num);
+    }
+
+    printf("\n");
 
 }

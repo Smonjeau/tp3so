@@ -22,29 +22,30 @@ char *answers[12] = {"entendido\n", "itba\n", "M4GFKZ289aku\n", "fk3wfLCm3QvS\n"
 void chat(int sockfd){ 
 
     int new=1;
-    char buff[MAX] = {0};
-    int n; 
+    char buff[MAX];
 
+    for (int challenge = 0; challenge < 12; challenge++) {
 
-    for (int challenge = 0; challenge <12;) { 
+        int retry = 1;
+        while(retry){
 
-        if (new){
-            printf("------------- DESAFIO -------------\n");
-            new=0;
-            (*challenges[challenge])();
-        }
-        
-        read(sockfd, buff, sizeof(buff));
-
-        if(strcmp(buff, answers[challenge])== 0){
-            challenge++;
-            new=1;
             system("clear");
-        }else{
-            printf("Respuesta incorrecta: %s\n",buff);
-            sleep(3);
-            for(int i=0; i<strlen(buff); i++)
-                putchar('\b');
+            printf("------------- DESAFIO -------------\n");
+
+            (*challenges[challenge])();
+
+            bzero(buff, MAX);
+            int n = read(sockfd, buff, sizeof(buff));
+
+            if(n == -1 || n == 0)
+                return;
+
+            if(strcmp(buff, answers[challenge])== 0){
+                retry = 0;
+            }else{
+                printf("Respuesta incorrecta: %s\n",buff);
+            }
+
         }
 
     }
@@ -56,11 +57,11 @@ void chat(int sockfd){
 
 int main(){ 
 
-    srand(time(NULL));
-
     int sockfd, connfd, len; 
     struct sockaddr_in servaddr = {0};
     struct sockaddr_in cli = {0}; 
+
+    srand(time(NULL));
   
     // Socket creation
     sockfd = socket(AF_INET, SOCK_STREAM, 0); 

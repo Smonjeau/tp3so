@@ -18,7 +18,7 @@ void chat(int sockfd);
 int main() {
 	int sockfd, connfd; 
 	struct sockaddr_in servaddr = {0};
-	struct sockaddr_in cli = {0}; 
+	struct sockaddr_in cli = {0};
 
 	// Socket creation
 	sockfd = socket(AF_INET, SOCK_STREAM, 0); 
@@ -56,9 +56,11 @@ void chat(int sockfd){
 	char *answers[12] = {"entendido\n", "itba\n", "M4GFKZ289aku\n", "fk3wfLCm3QvS\n", "too_easy\n", ".RUN_ME\n",
 		"K5n2UFfpFMUN\n", "BUmyYq5XxXGt\n", "u^v\n","chin_chu_lan_cha\n","gdb_rules\n","normal\n"};
 	
-	for(int i=0; i<12; i++){
+	for(int i=0; i<11; i++){
 		write(sockfd, answers[i], strlen(answers[i]));
 	 	printf("%s", answers[i]);
+
+		sleep(1);
 
 	 	if ((strncmp(buff, "exit", 4)) == 0)
 	 		exit(0);

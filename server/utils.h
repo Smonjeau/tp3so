@@ -4,7 +4,4 @@
 
 int randomInt(int limite_inferior, int limite_superior);
 
-double generateRandomFloat();
-
-
 #endif
