@@ -1,14 +1,12 @@
-DESAFIOS
-
-0: entendido
-1: itba
-2: M4GFKZ289aku
-3: fk3wfLCm3QvS
-4: too_easy
-5: .RUN_ME
-6: K5n2UFfpFMUN
-7: BUmyYq5XxXGt
-8: u^v
-9: chin_chu_lan_cha
-10: gdb_rules
-11: normal
+entendido
+itba
+M4GFKZ289aku
+fk3wfLCm3QvS
+too_easy
+.RUN_ME
+K5n2UFfpFMUN
+BUmyYq5XxXGt
+u^v
+chin_chu_lan_cha
+gdb_rules
+normal
