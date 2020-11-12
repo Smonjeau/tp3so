@@ -60,25 +60,18 @@ void chat(int sockfd){
 	while(c == '\n') {
 		do {
 			c = getchar();
-			buff[len++] = c;
+			if(c != EOF)
+				buff[len++] = c;
 		} while(c != '\n' && c != EOF);
+		if(c == EOF) //Pues la ultima linea de respuestas.txt no tiene salto de liena
+			buff[len++] = '\n';
 		buff[len++] = 0;
-		printf("%s", buff);
-		write(sockfd, buff, len);
-		len = 0;
+		if(len > 2) {
+			//Bash siempre lee una linea extra vacia
+			printf("%s", buff);
+			write(sockfd, buff, len);
+		}
+		len = 0;		
 	}
-
-
-	while(1) { 
-		printf("Enter the string: "); 
-		
-		int n = 0; 
-		while ((buff[n++] = getchar()) != '\n');
-		
-		write(sockfd, buff, n);
-		printf("%s", buff);
-
-		if ((strncmp(buff, "exit", 4)) == 0)
-			exit(0);
-	} 
+	exit(0);
 }
