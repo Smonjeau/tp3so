@@ -66,7 +66,7 @@ void challenge4(){
 
 void challenge5(){
 
-    printf("respuesta = strings:36\n");
+    printf("respuesta = strings:54\n");
 
 }
 
