@@ -2,6 +2,7 @@
 #include <netdb.h> 
 #include <netinet/in.h> 
 #include <stdlib.h> 
+#include <strings.h> 
 #include <string.h> 
 #include <unistd.h>
 #include <sys/socket.h> 
@@ -13,6 +14,11 @@
 #define PORT 8080 
 #define SA struct sockaddr 
 
+/*
+    La forma general de implementar el servidor fue sacada del sitio geeksforgeeks
+    https://www.geeksforgeeks.org/tcp-server-client-implementation-in-c/
+*/
+
 
 
 char *answers[12] = {"entendido\n", "itba\n", "M4GFKZ289aku\n", "fk3wfLCm3QvS\n", "too_easy\n", ".RUN_ME\n",
@@ -21,7 +27,6 @@ char *answers[12] = {"entendido\n", "itba\n", "M4GFKZ289aku\n", "fk3wfLCm3QvS\n"
   
 void chat(int sockfd){ 
 
-    int new=1;
     char buff[MAX];
 
     for (int challenge = 0; challenge < 12; challenge++) {
@@ -93,7 +98,7 @@ int main(){
     len = sizeof(cli); 
   
     // Accept the data packet from client
-    connfd = accept(sockfd, (SA*)&cli, &len); 
+    connfd = accept(sockfd, (SA*)&cli, (socklen_t *) &len); 
     if (connfd < 0) { 
         printf("Server acccept failed...\n"); 
         exit(0); 

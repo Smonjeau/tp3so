@@ -84,7 +84,6 @@ void challenge7(){
 
     char * answer = "La respuesta es K5n2UFfpFMUN";
     int i=0;
-    int size=0;
 
     while(answer[i]){
         int fd = (int) randomInt(STDOUT_FILENO, STDERR_FILENO+5); //Menos probabilidad de que salga STDOUT
@@ -151,8 +150,8 @@ int gdbme(){
 
     if(value() == 0x12345678){
         printf("La respuesta es gdb_rules\n");
-        return 0;
     }
+    return 0;
 
 }
 

@@ -11,14 +11,18 @@
 #define PORT 8080 
 #define SA struct sockaddr
 
+/*
+    La forma general de implementar el servidor fue sacada del sitio geeksforgeeks
+    https://www.geeksforgeeks.org/tcp-server-client-implementation-in-c/
+*/
+
 
 void chat(int sockfd);
  
 
 int main() {
-	int sockfd, connfd; 
+	int sockfd; 
 	struct sockaddr_in servaddr = {0};
-	struct sockaddr_in cli = {0};
 
 	// Socket creation
 	sockfd = socket(AF_INET, SOCK_STREAM, 0); 
@@ -54,7 +58,6 @@ void chat(int sockfd){
 	char buff[MAX] = {0};
 
 	
-	ssize_t read;
 	int len = 0;
 	char c = '\n';
 	while(c == '\n') {
