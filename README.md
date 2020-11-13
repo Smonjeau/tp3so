@@ -20,7 +20,7 @@ make all
 
 Corremos el server por un lado (puede ser en una terminal separada o en la misma terminal en modo background).
 ```bash
-client/client
+server/server
 ```
 
 Iniciamos el client. El script se encarga de llamar al ejecutable client y enviarle a su entrada estandar las respuestas que se leen del archivo respuestas.txt.
