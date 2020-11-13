@@ -66,14 +66,14 @@ void challenge4(){
 
 void challenge5(){
 
-    printf("respuesta = strings:54\n");
+    printf("respuesta = strings:57\n");
 
 }
 
 
 void challenge6(){
 
-    printf(".plt .plt_got .text ? .fini .rodata .eh_frame_hdr\n");
+    printf(".init .plt .text ? .fini .rodata .eh_frame_hdr\n");
 
 }
 
